@@ -1,1 +1,39 @@
-<h1>Sessions#index</h1>
+
+
+<div class="container" id="root">
+
+    <!-- navbar goes here -->
+    <navbar></navbar>
+
+    <router-view></router-view>
+    <!-- main page switch  -->
+</div>
+
+
+<script type="text/x-template" id="navbar">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">
+            <button>Home</button>
+          </a>
+        </div>
+        <router-link to="/profile">
+            <button class="button btn-default navbar-btn pull-right">Profile</button>
+        </router-link>
+
+        <button class="button btn-default navbar-btn pull-right">Stats</button>
+      </div>
+    </nav>
+</script>
+
+<script type="text/x-template" id="profile">
+
+    <h3>WE ARE AT THE PROFILE PAGE</h3>
+
+</script>
+
+
+<%= javascript_include_tag 'navbar/navbar.js' %>
+<%= javascript_include_tag 'profile/profile.js' %>
+<%= javascript_include_tag 'root.js' %>
