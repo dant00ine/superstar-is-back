@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/dant00ine/superstar-is-back#readme",
   "devDependencies": {
+    "css-loader": "^0.28.0",
     "path": "^0.12.7",
     "vue-loader": "^11.3.4",
+    "vue-template-compiler": "^2.2.6",
     "webpack": "^2.4.1",
     "webpack-merge": "^4.1.0"
   }

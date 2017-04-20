@@ -4,14 +4,20 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand">
-            <button>Home</button>
+              <router-link to="/home">
+                  <button>Home</button>
+              </router-link>
           </a>
         </div>
+
         <router-link to="/profile">
             <button class="button btn-default navbar-btn pull-right">Profile</button>
         </router-link>
 
-        <button class="button btn-default navbar-btn pull-right">Stats</button>
+        <router-link to="/stats">
+            <button class="button btn-default navbar-btn pull-right">Stats</button>
+        </router-link>
+
       </div>
     </nav>
 
@@ -21,7 +27,6 @@
 <script>
 
     module.exports = {
-        template: "#navbar",
 
         data: function(){
             return {
