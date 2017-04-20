@@ -10,7 +10,13 @@
 </div>
 
 
+
+
+<!--  NAVBAR TEMPLATE -->
+
+
 <script type="text/x-template" id="navbar">
+
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -25,7 +31,16 @@
         <button class="button btn-default navbar-btn pull-right">Stats</button>
       </div>
     </nav>
+
 </script>
+
+
+
+
+
+
+
+
 
 <script type="text/x-template" id="profile">
 
@@ -34,6 +49,9 @@
 </script>
 
 
+<%= javascript_include_tag 'navbar/navbar-template.js', type: 'text/x-template', id: 'navbar' %>
 <%= javascript_include_tag 'navbar/navbar.js' %>
+<%= javascript_include_tag 'home/home.js' %>
 <%= javascript_include_tag 'profile/profile.js' %>
+<%= javascript_include_tag 'stats/stats.js' %>
 <%= javascript_include_tag 'root.js' %>
