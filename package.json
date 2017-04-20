@@ -1,0 +1,29 @@
+{
+  "name": "superstar-is-back",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dant00ine/superstar-is-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dant00ine/superstar-is-back/issues"
+  },
+  "homepage": "https://github.com/dant00ine/superstar-is-back#readme",
+  "devDependencies": {
+    "path": "^0.12.7",
+    "vue-loader": "^11.3.4",
+    "webpack": "^2.4.1",
+    "webpack-merge": "^4.1.0"
+  }
+}

@@ -8,4 +8,12 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w( stats/* home/* navbar/* profile/* root )
+Rails.application.config.assets.precompile += %w( bundle )
+
+
+# <!-- <%= javascript_include_tag 'navbar/navbar-template.js', type: 'text/x-template', id: 'navbar' %>
+# <%= javascript_include_tag 'navbar/navbar.js' %>
+# <%= javascript_include_tag 'home/home.js' %>
+# <%= javascript_include_tag 'profile/profile.js' %>
+# <%= javascript_include_tag 'stats/stats.js' %>
+# <%= javascript_include_tag 'root.js' %> -->
