@@ -16,9 +16,9 @@ const router = new VueRouter({
     routes: routes
 })
 
-router.beforeEach((to, from) => {
-    // make request to verify auth
-})
+// router.beforeEach((to, from) => {
+//     // make request to verify auth
+// })
 
 var app = new Vue({
     router: router,
