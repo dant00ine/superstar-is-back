@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sample request for login route:
 
-Things you may want to cover:
+``
+    curl --data "session[email]=email@gmail.com&session[password]=password" -H 'Accept: application/vnd.superstar-is-back.v1' \ api.superstar-is-back.dev/sessions
+``
 
-* Ruby version
+Sample request for protected route (**note**: there are two headers supplied):
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+``
+    curl -H 'Accept: application/vnd.superstar-is-back.v1' -H 'Authorization: cszZPNq_LyeegxZFECWk' \ api.superstar-is-back.dev/users/1
+``
