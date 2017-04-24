@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
 
+    before_action :authenticate_with_token!, only: [:update, :destroy]
+    respond_to :json
+
     def create
         user = User.new(user_params)
         if user.save
@@ -22,8 +25,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
 
     def destroy
-        user = User.find(params[:id])
-        user.destroy
+        current_user.destroy
         head 204
     end
 
