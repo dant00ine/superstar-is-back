@@ -2,8 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
 
-    before_action :authenticate_with_token!, only: [:update, :destroy]
+    before_action :authenticate_with_token!, only: [:show, :update, :destroy]
     respond_to :json
+
+    def show
+        puts "anything happening here?"
+        User.find(params[:id])
+    end
 
     def create
         user = User.new(user_params)
