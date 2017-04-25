@@ -43,12 +43,18 @@
                 }
 
                 $.ajax({
-                    url: '/sessions',
+                    url: 'sessions',
                     method: 'POST',
-                    headers: 'Accept: application/vnd.superstar-is-back.v1',
-                    contentType: "application/json",
-                    dadaType: "json",
-                    data: sessionData
+                    data: sessionData,
+                    success: (res) => {
+                        console.log(res);
+                        this.$emit('loginevent')
+                        // route to home page
+                    },
+                    error: (err) => {
+                        console.log(err.responseJSON);
+                        this.errors = err.responseJSON.errors
+                    }
                 })
 
             },
@@ -56,7 +62,8 @@
             testapi: function(){
 
                 $.ajax({
-                    url: '/users/1'
+                    url: '/users/1',
+                    header: 'Accept: application/vnd.superstar-is-back.v1'
                 })
             }
 
