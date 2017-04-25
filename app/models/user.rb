@@ -5,8 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :auth_token, uniqueness: true
+  validates :username, presence: true, uniqueness: true
 
   before_create :generate_authentication_token!
+
+  has_many :usertoteams
+  has_many :teams, through: :usertoteams
 
   def generate_authentication_token!
       begin
