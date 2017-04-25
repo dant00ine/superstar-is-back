@@ -25,6 +25,14 @@ var app = new Vue({
     el: '#root',
     components: {
         navbar: navbar
+    },
+    data: {
+        loggedin: false
+    },
+    methods: {
+        toggleNav: function(){
+            this.loggedin = !this.loggedin
+        }
     }
 
 })

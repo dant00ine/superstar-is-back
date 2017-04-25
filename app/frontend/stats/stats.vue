@@ -1,14 +1,14 @@
 <template>
-   
+
     <div>
         <img  v-if="picture.length > 0" :src="picture_url">
         <h3>Player Stats</h3>
-        
+
         <div v-for="(value, key) in stats">
            <p><b> {{ value.name}}</b> : {{ value.stat}}</p>
          </div>
     </div>
-    
+
 </template>
 
 <script>
@@ -29,9 +29,9 @@
                             freeThrows:{name:"Free Throws", stat:0}
                         },
 
-                        picture:"passport.jpg"
+                        picture:"dant00.jpg"
 
-                                     
+
             }
         },
       computed: {
@@ -43,7 +43,7 @@
                 // setter
                 set: function (picture) {
                     this.picture = picture
-              
+
                 }
             }
       }
