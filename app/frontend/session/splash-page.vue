@@ -43,12 +43,20 @@
                 }
 
                 $.ajax({
-                    url: '/sessions',
+                    url: 'sessions',
                     method: 'POST',
                     header: 'Accept: application/vnd.superstar-is-back.v1',
                     contentType: 'application/x-www-form-urlencoded',
                     dataType: "JSON",
-                    data: sessionData
+                    data: sessionData,
+                    success: (res) => {
+                        console.log(res);
+
+                    },
+                    error: (err) => {
+                        // console.log(err.responseJSON);
+                        this.errors = err.responseJSON.errors
+                    }
                 })
 
             },
