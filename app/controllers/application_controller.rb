@@ -1,3 +1,12 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  #because APIs don't have sessions
+  protect_from_forgery with: :null_session
+
+  def index
+      render 'sessions/index'
+  end
+
+  # app/controllers/concerns/authenticable.rb
+  include Authenticable
+
 end
