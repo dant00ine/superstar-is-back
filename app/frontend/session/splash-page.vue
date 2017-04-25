@@ -45,9 +45,10 @@
                 $.ajax({
                     url: 'sessions',
                     method: 'POST',
-                    header: 'Accept: application/vnd.superstar-is-back.v1',
-                    contentType: 'application/x-www-form-urlencoded',
-                    dataType: "JSON",
+                    headers: {
+                        Accept: 'application/vnd.superstar-is-back.v1',
+                        "Content-Type": 'application/json'
+                    },
                     data: sessionData,
                     success: (res) => {
                         console.log(res);

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root 'application#index'
 
-  post '/sessions',to: 'api/v1/sessions#create'
+  # post '/sessions',to: 'api/v1/sessions#create'
 
     # Api definition
     namespace :api, path: '/'  do
