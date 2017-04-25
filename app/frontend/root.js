@@ -1,10 +1,8 @@
-
-var stats = require('./stats/stats')
-var home = require('./home/home')
-var splash = require('./session/splash-page')
-
 import navbar from './navbar/navbar'
 import profile from './profile/profile'
+import stats from './stats/stats'
+import home from './home/home'
+import splash from './session/splash-page'
 
 const routes = [
     {path: '/', component: splash},
