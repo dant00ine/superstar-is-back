@@ -14,8 +14,6 @@
             <input v-model="password" type="password" placeholder="PASSWORD">
             <button type="button" class="btn" @click="login">log in</button>
         </form>
-
-        <button class="btn" @click="testapi">TEST API</button>
     </div>
 
 </template>
@@ -58,14 +56,6 @@
                 })
 
             },
-
-            testapi: function(){
-
-                $.ajax({
-                    url: '/users/1',
-                    header: 'Accept: application/vnd.superstar-is-back.v1'
-                })
-            }
 
         }
 
