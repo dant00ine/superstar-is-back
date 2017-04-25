@@ -3,7 +3,7 @@ require 'api_constraints'
 Rails.application.routes.draw do
 
   root 'application#index'
-
+  post  '/sessions', to: 'api/v1/sessions#create'
 
     # Api definition
     namespace :api, defaults: { format: :json }, path: '/'  do
