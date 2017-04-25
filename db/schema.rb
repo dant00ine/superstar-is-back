@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424184938) do
+ActiveRecord::Schema.define(version: 20170424230509) do
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "team1_id"
+    t.integer  "team2_id"
+    t.integer  "result",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["team1_id"], name: "index_matches_on_team1_id"
+    t.index ["team2_id"], name: "index_matches_on_team2_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_to_teams", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_user_to_teams_on_team_id"
+    t.index ["user_id"], name: "index_user_to_teams_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -26,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170424184938) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "auth_token",             default: ""
+    t.string   "username"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

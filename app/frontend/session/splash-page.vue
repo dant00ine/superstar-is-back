@@ -14,6 +14,8 @@
             <input v-model="password" type="password" placeholder="PASSWORD">
             <button type="button" class="btn" @click="login">log in</button>
         </form>
+
+        <button class="btn" @click="testapi">TEST API</button>
     </div>
 
 </template>
@@ -30,14 +32,31 @@
         },
 
         methods : {
+
             login: function(){
-                $.ajax({
-                    url: '/sessions',
-                    method: 'POST',
-                    data: {
+
+                var sessionData = {
+                    session:{
                         email: this.email,
                         password: this.password
                     }
+                }
+
+                $.ajax({
+                    url: '/sessions',
+                    method: 'POST',
+                    headers: 'Accept: application/vnd.superstar-is-back.v1',
+                    contentType: "application/json",
+                    dadaType: "json",
+                    data: sessionData
+                })
+
+            },
+
+            testapi: function(){
+
+                $.ajax({
+                    url: '/users/1'
                 })
             }
 
