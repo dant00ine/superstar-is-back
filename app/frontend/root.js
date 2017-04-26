@@ -21,17 +21,20 @@ router.beforeEach((to, from, next) => {
     var auth_token = localStorage.getItem('superstar-token')
     $.ajax({
         url: '/sessions/verify',
-        headers: {Authorization: auth_token},
+        headers: { Authorization: auth_token },
         success: (res) => {
             console.log(res);
             app.loggedin = true
+            localStorage.setItem('user-info', res.current_user)
             next()
         },
         error: (err) => {
-            console.log(err);
-            this.$router.push('/')
+            console.log(err.responseJSON);
+            app.loggedin = false
+            router.push('/')
         }
     })
+    next()
 })
 
 var app = new Vue({

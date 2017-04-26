@@ -18,7 +18,6 @@ class Api::V1::SessionsController < ApplicationController
     def verify
         # byebug
         authenticate_with_token!
-        render json: {current_user: current_user, status: :success}
     end
 
     def destroy
