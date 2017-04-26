@@ -45,8 +45,10 @@
                     method: 'POST',
                     data: sessionData,
                     success: (res) => {
-                        console.log(res);
+                        console.log(res.auth_token);
+                        localStorage.setItem('superstar-token', res.auth_token)
                         this.$emit('loginevent')
+                        this.$router.push('home')
                         // route to home page
                     },
                     error: (err) => {
