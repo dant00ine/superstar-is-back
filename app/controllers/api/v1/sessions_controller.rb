@@ -4,6 +4,7 @@ class Api::V1::SessionsController < ApplicationController
         user_password = params[:session][:password]
         user_email = params[:session][:email]
         user = User.find_by(email: user_email)
+        # pull this andy
 
         if user != nil && user.authenticate(user_password)
             user.generate_authentication_token!
