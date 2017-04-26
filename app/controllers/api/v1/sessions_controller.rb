@@ -15,6 +15,12 @@ class Api::V1::SessionsController < ApplicationController
         end
     end
 
+    def verify
+        # byebug
+        authenticate_with_token!
+        render json: {current_user: current_user, status: :success}
+    end
+
     def destroy
         user = User.find_by(auth_token: params[:id])
         user.generate_authentication_token!

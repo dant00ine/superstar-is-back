@@ -1,6 +1,9 @@
 module Authenticable
 
     def current_user
+        request.headers.each do |header|
+            puts header
+        end
         @current_user ||= User.find_by(auth_token: request.headers['Authorization'])
     end
 

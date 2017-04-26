@@ -49,7 +49,6 @@
                         localStorage.setItem('superstar-token', res.auth_token)
                         this.$emit('loginevent')
                         this.$router.push('home')
-                        // route to home page
                     },
                     error: (err) => {
                         console.log(err.responseJSON);

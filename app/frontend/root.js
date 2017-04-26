@@ -17,7 +17,21 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     // make request to verify auth
-    next()
+    var authenticated
+    var auth_token = localStorage.getItem('superstar-token')
+    $.ajax({
+        url: '/sessions/verify',
+        headers: {Authorization: auth_token},
+        success: (res) => {
+            console.log(res);
+            app.loggedin = true
+            next()
+        },
+        error: (err) => {
+            console.log(err);
+            this.$router.push('/')
+        }
+    })
 })
 
 var app = new Vue({
