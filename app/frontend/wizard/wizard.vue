@@ -1,3 +1,32 @@
+<style>
+
+    .skillbox input[type="radio"] {
+        display: none;
+    }
+
+    .skillbox input[type="radio"]:checked ~ #beginner {
+        background-color: green;
+    }
+
+    .skillbox input[type="radio"]:checked ~ #intermediate {
+        background-color: blue;
+    }
+
+    .skillbox input[type="radio"]:checked ~ #expert {
+        background-color: red;
+    }
+
+    .skillbox label{
+        outline: 1px solid black;
+        padding: 10px 50px;
+    }
+
+    .skillbox label:hover{
+        outline: 2px solid black;
+    }
+
+</style>
+
 <template>
 
     <div>
@@ -6,22 +35,19 @@
 
         <h3>Select your skill level!</h3>
 
-        <div class="col-xs-4">
-            <label class="skillbox">Beginner
-                <input type="radio" v-model="superstar.skillLevel" value="Beginner">
-            </label>
+        <div class="col-xs-4 skillbox">
+            <input id="beginner_button" type="radio" v-model="superstar.skillLevel" value="Beginner">
+            <label for="beginner_button" id="beginner">Beginner</label>
         </div>
 
-        <div class="col-xs-4">
-            <label class="skillbox">Intermediate
-                <input type="radio" v-model="superstar.skillLevel" value="Intermediate">
-            </label>
+        <div class="col-xs-4 skillbox">
+            <input id="intermediate_button" type="radio" v-model="superstar.skillLevel" value="Intermediate">
+            <label for="intermediate_button" id="intermediate">Intermediate</label>
         </div>
 
-        <div class="col-xs-4">
-            <label class="skillbox">Expert
-                <input type="radio" v-model="superstar.skillLevel" value="Expert">
-            </label>
+        <div class="col-xs-4 skillbox">
+            <input id="expert_button" type="radio" v-model="superstar.skillLevel" value="Expert">
+            <label for="expert_button" id="expert">Expert</label>
         </div>
 
 <br><br><br><br><br>
@@ -89,7 +115,7 @@
 
         <!-- Adjust your stats  -->
         <h3>Adjust your stats</h3>
-        <h2>Unused points: </h2>
+        <h4>Unused points: {{superstar.points}}</h4>
 
 
 
@@ -106,8 +132,16 @@ export default {
     data() {
         return {
             superstar: {
+                points: 0,
                 skillLevel: "",
-                position: ""
+                position: "",
+                username: "",
+                stats: {
+                    speed: 0, strength: 0, endurance: 0, shot: 0,
+                    rebound: 0, pass: 0, guard: 0, block: 0,
+                    steal: 0, turnover: 0, layup: 0, tussle: 0,
+                    speed: 0
+                }
             }
 
         }
@@ -115,13 +149,3 @@ export default {
 }
 
 </script>
-
-<style>
-
-    .skillbox{
-        outline: 1px solid black;
-        padding: 10px 50px;
-        margin-left: 30%;
-    }
-
-</style>
