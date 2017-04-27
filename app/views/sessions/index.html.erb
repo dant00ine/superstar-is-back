@@ -1,5 +1,27 @@
 <style>
 
+#root{
+    position: relative;
+    overflow: hidden;
+    /*z-index: -1;*/
+}
+
+#root:before{
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    /*z-index: -1;*/
+    background: url(<%= image_path('bball.svg') %>) 0 0 repeat;
+    transform: rotate(30deg);
+}
+
+.bball:hover {
+    animation: bounce-in .5s;
+}
+
 .bounce-enter-active {
     animation: bounce-in .5s;
 }
@@ -23,7 +45,6 @@
 
 
 <div class="container" id="root">
-
     <!-- navbar goes here -->
     <navbar v-bind:loggedin="loggedin"></navbar>
 
