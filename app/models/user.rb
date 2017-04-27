@@ -18,8 +18,11 @@ class User < ApplicationRecord
   end
 
   def matches
-    if teams      
-      return teams.reduce { |memo=teams[0].matches, team| memo.or(team.matches) }
+    if teams
+      ids = ""
+      teams.each { |team| ids += "#{team.id},"}
+      ids.chop!
+      return Match.where("team1_id IN (#{ids}) OR team2_id IN (#{ids})")
     end
   end
 end

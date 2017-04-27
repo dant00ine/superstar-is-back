@@ -15,8 +15,8 @@ RSpec.describe Team, type: :model do
       teamA = team_building :a
       teamB = team_building :b
       teamC = team_building :c
-      user = User.new(username:"test1", email:"test@test1.test", password: "test")
-      Match.create(team1:@team, team2:teamA, creator:user)
+      user = User.new(username:"test22", email:"test@test1.test", password: "test")
+      Match.create(team1:teamA, team2:@team, creator:user)
       Match.create(team1:teamB, team2:@team, creator:user)
       Match.create(team1:@team, team2:teamC, creator:user)
       expect(@team.matches.length).to eql(3)

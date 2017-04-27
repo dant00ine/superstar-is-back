@@ -9,8 +9,8 @@ class Team < ApplicationRecord
   def gen_name!
     if name == nil or name.length == 0
       names = ""
-      @users.each { |user| names += "#{user.username} " }
-      @name = names.chop
+      users.each { |user| names += "#{user.username} " }
+      self.name = names.chop
     end
   end
 
@@ -20,7 +20,8 @@ class Team < ApplicationRecord
   end
 
   def matches
-    return Match.where(team1: self).or(Match.where(team2: self))
+    return Match.where("team1_id = #{id} OR team2_id = #{id}")
+    #return Match.where(team1: self).or(Match.where(team2: self))
   end
 
   def opponents
