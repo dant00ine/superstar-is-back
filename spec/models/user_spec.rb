@@ -17,13 +17,8 @@ RSpec.describe User, type: :model do
     it "has teams" do
       user1 = build(:user)
       user2 = build(:user, :userA)
-      team = Team.create(users:[user1, user2])
+      Team.create(users:[user1, user2])
       user1.reload
-      puts ""
-      puts "-----"
-      puts user1.teams
-      puts team.users
-      puts "-----"
       expect(user1.teams.length).to eql(1)
     end
     it "can access matches through teams" do
@@ -33,10 +28,10 @@ RSpec.describe User, type: :model do
       match3 = matchmaker :b
       match1.team1.users.push user
       match2.team2.users.push user
-      puts "Test"
-      puts user.teams
-      puts user.teams[0]
-      puts "Test"
+      match1.save
+      match2.save
+      match3.save
+      user.reload
       expect(user.matches.length).to eql(2)
     end
   end
