@@ -22,6 +22,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     // make request to verify auth
+
     if(to.path == '/wizard' || to.path == '/'){ next() }
     else {
         var auth_token = localStorage.getItem('superstar-token')
