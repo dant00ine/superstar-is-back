@@ -25,6 +25,18 @@
         outline: 2px solid black;
     }
 
+    .plus-button {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    .minus-button {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    .stat-picker h4 {
+        display: inline-block;
+    }
+
 </style>
 
 <template>
@@ -35,17 +47,17 @@
 
         <h3>Select your skill level!</h3>
 
-        <div class="col-xs-4 skillbox">
+        <div class="col-xs-4 skillbox" @click="setPoints(50)">
             <input id="beginner_button" type="radio" v-model="superstar.skillLevel" value="Beginner">
             <label for="beginner_button" id="beginner">Beginner</label>
         </div>
 
-        <div class="col-xs-4 skillbox">
+        <div class="col-xs-4 skillbox" @click="setPoints(75)">
             <input id="intermediate_button" type="radio" v-model="superstar.skillLevel" value="Intermediate">
             <label for="intermediate_button" id="intermediate">Intermediate</label>
         </div>
 
-        <div class="col-xs-4 skillbox">
+        <div class="col-xs-4 skillbox" @click="setPoints(100)">
             <input id="expert_button" type="radio" v-model="superstar.skillLevel" value="Expert">
             <label for="expert_button" id="expert">Expert</label>
         </div>
@@ -115,10 +127,16 @@
 
         <!-- Adjust your stats  -->
         <h3>Adjust your stats</h3>
-        <h4>Unused points: {{superstar.points}}</h4>
+        <h4>Unused points: {{remainingPoints}}</h4>
+        <h4>Total points: {{superstar.totalPoints}}</h4>
 
-
-
+        <p class="statpicker">
+            <h4>Speed:</h4>
+            <span class="minus-button" @click="decrementStat('speed')">-</span>
+            {{this.superstar.stats.speed}}
+            <span class="plus-button" @click="incrementStat('speed')">+</span>
+        </p>
+        <input v-model="superstar.stats.strength" type="number" placeholder="Your speed.">
 
     </div>
 
@@ -132,7 +150,7 @@ export default {
     data() {
         return {
             superstar: {
-                points: 0,
+                totalPoints: 0,
                 skillLevel: "",
                 position: "",
                 username: "",
@@ -144,6 +162,24 @@ export default {
                 }
             }
 
+        }
+    },
+
+    methods: {
+        setPoints: function(num){
+            this.superstar.totalPoints = num
+        },
+        incrementStat: function(stat){
+            this.superstar.stats[stat] += 1
+        },
+        decrementStat: function(stat){
+            this.superstar.stats[stat] -= 1
+        }
+    },
+
+    computed: {
+        remainingPoints: function() {
+            return this.superstar.totalPoints - (parseInt(this.superstar.stats.speed) + parseInt(this.superstar.stats.strength))
         }
     }
 }
