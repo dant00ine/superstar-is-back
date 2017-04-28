@@ -4,6 +4,7 @@ class Api::V1::SessionsController < ApplicationController
         user_password = params[:session][:password]
         user_email = params[:session][:email]
         user = User.find_by(email: user_email)
+        # pull this andy
 
         if user != nil && user.authenticate(user_password)
             user.generate_authentication_token!
@@ -12,6 +13,11 @@ class Api::V1::SessionsController < ApplicationController
         else
             render json: { errors: 'Invalid email or password' }, status: 422
         end
+    end
+
+    def verify
+        # byebug
+        authenticate_with_token!
     end
 
     def destroy

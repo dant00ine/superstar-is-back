@@ -4,7 +4,7 @@
         <div class="jumbotron">
             <h1>Hello, world!</h1>
             <p>...</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+            <p><router-link to="/wizard"><a class="btn btn-primary btn-lg" role="button">Create Account</a></router-link></p>
         </div>
         <!--  lightweight login form -->
         <form>
@@ -45,9 +45,10 @@
                     method: 'POST',
                     data: sessionData,
                     success: (res) => {
-                        console.log(res);
+                        console.log(res.auth_token);
+                        localStorage.setItem('superstar-token', res.auth_token)
                         this.$emit('loginevent')
-                        // route to home page
+                        this.$router.push('home')
                     },
                     error: (err) => {
                         console.log(err.responseJSON);
