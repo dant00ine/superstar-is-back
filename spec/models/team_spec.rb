@@ -19,7 +19,22 @@ RSpec.describe Team, type: :model do
       Match.create(team1:teamA, team2:@team, creator:user)
       Match.create(team1:teamB, team2:@team, creator:user)
       Match.create(team1:@team, team2:teamC, creator:user)
-      expect(@team.matches.length).to eql(3)
+      matches = @team.matches
+      expect(matches.length).to eql(3)
+      expect(matches[0].instance_of? Match).to be true
+    end
+    it "allows getting of all opponents" do
+      teamA = team_building :a
+      teamB = team_building :b
+      teamC = team_building :c
+      user = User.new(username:"test22", email:"test@test1.test", password: "test")
+      Match.create(team1:teamA, team2:@team, creator:user)
+      Match.create(team1:teamB, team2:@team, creator:user)
+      Match.create(team1:@team, team2:teamB, creator:user)
+      Match.create(team1:@team, team2:teamC, creator:user)
+      opponents = @team.opponents
+      expect(opponents.length).to eql(3)
+      expect(opponents[0].instance_of? Team).to be true
     end
   end
   it "will not save with duplicate players" do

@@ -6,6 +6,13 @@ class Api::V1::UsersController < ApplicationController
         render json: User.find(params[:id])
     end
 
+    def show_matches
+      user = User.find(params[:id])
+      result = nil
+      result = user.matches if user
+      render json: result
+    end
+
     def create
         user = User.new(user_params)
         if user.save

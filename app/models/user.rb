@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_many :signups
   has_many :teams, through: :signups
-  #has_many :matches, through: :teams
+  has_one :stats
 
   def generate_authentication_token!
       begin
