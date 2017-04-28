@@ -16,16 +16,13 @@ const routes = [
     {path: '/home', component: home}
 ]
 
-// function verify(){
-//
-// }
-
 const router = new VueRouter({
     routes: routes
 })
 
 router.beforeEach((to, from, next) => {
     // make request to verify auth
+
     if(to.path == '/wizard' || to.path == '/'){ next() }
     else {
         var auth_token = localStorage.getItem('superstar-token')
@@ -33,13 +30,11 @@ router.beforeEach((to, from, next) => {
             url: '/sessions/verify',
             headers: { Authorization: auth_token },
             success: (res) => {
-                console.log(res);
                 app.loggedin = true
                 localStorage.setItem('user-info', res.current_user)
                 next()
             },
             error: (err) => {
-                console.log(err.responseJSON);
                 app.loggedin = false
                 router.push('/')
             }

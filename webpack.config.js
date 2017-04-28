@@ -10,10 +10,45 @@ var config = module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
+                 options: {
+          // `loaders` will overwrite the default loaders.
+          // The following config will cause all <script> tags without "lang"
+          // attribute to be loaded with coffee-loader
+          loaders: {
+                test: /\.css$/,
+                loader: 'css-loader'
+          },
+
+          // `preLoaders` are attached before the default loaders.
+          // You can use this to pre-process language blocks - a common use
+          // case would be build-time i18n.
+          preLoaders: {
+            
+          },
+
+          // `postLoaders` are attached after the default loaders.
+          //
+          // - For `html`, the result returned by the default loader
+          //   will be compiled JavaScript render function code.
+          //
+          // - For `css`, the result will be returned by vue-style-loader
+          //   which isn't particularly useful in most cases. Using a postcss
+          //   plugin will be a better option.
+          postLoaders: {
+            test: /vue-icons/, loader: "callback-loader"
+          },
+          callbackLoader: require("vue-icons/icon-loader")(["fa-thumbs-up"]) ,
+
+          // `excludedPreLoaders` should be regex
+          //excludedPreLoaders: /(eslint-loader)/
+        }
+                
             },
             
         ]
     }
+    
+   
 };
 
 config.output = {
