@@ -7,12 +7,22 @@ class User < ApplicationRecord
 
   before_create :generate_authentication_token!
 
-  has_many :usertoteams
-  has_many :teams, through: :usertoteams
+  has_many :signups
+  has_many :teams, through: :signups
+  has_one :stats
 
   def generate_authentication_token!
       begin
           self.auth_token = Devise.friendly_token
       end while self.class.exists?(auth_token: auth_token)
+  end
+
+  def matches
+    if teams
+      ids = ""
+      teams.each { |team| ids += "#{team.id},"}
+      ids.chop!
+      return Match.where("team1_id IN (#{ids}) OR team2_id IN (#{ids})")
+    end
   end
 end

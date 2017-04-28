@@ -10,31 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424224832) do
+ActiveRecord::Schema.define(version: 20170428150559) do
 
   create_table "matches", force: :cascade do |t|
     t.integer  "team1_id"
     t.integer  "team2_id"
+    t.integer  "creator_id"
     t.integer  "result",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.datetime "date"
+    t.index ["creator_id"], name: "index_matches_on_creator_id"
     t.index ["team1_id"], name: "index_matches_on_team1_id"
     t.index ["team2_id"], name: "index_matches_on_team2_id"
+  end
+
+  create_table "signups", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_signups_on_team_id"
+    t.index ["user_id"], name: "index_signups_on_user_id"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "rebound"
+    t.integer  "assist"
+    t.integer  "blocks"
+    t.integer  "steals"
+    t.integer  "turn_overs"
+    t.integer  "points"
+    t.integer  "three_points"
+    t.integer  "free_throws"
+    t.integer  "level",        default: 0
+    t.integer  "position",     default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_stats_on_user_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_to_teams", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_user_to_teams_on_team_id"
-    t.index ["user_id"], name: "index_user_to_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

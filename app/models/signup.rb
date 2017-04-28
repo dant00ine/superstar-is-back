@@ -1,4 +1,4 @@
-class UserToTeam < ApplicationRecord
+class Signup < ApplicationRecord
   belongs_to :team
   belongs_to :user
 end
