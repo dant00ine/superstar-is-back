@@ -6,10 +6,12 @@
 
     .skillbox input[type="radio"]:checked ~ #beginner {
         background-color: green;
+        color: white;
     }
 
     .skillbox input[type="radio"]:checked ~ #intermediate {
         background-color: blue;
+        color: white;
     }
 
     .skillbox input[type="radio"]:checked ~ #expert {
@@ -23,6 +25,7 @@
 
     .skillbox label:hover{
         outline: 2px solid black;
+        font-size: 1.1em;
     }
 
     .plus-button {
@@ -32,6 +35,10 @@
     .minus-button {
         font-weight: bold;
         font-size: 1.5em;
+    }
+    .stat-picker {
+        user-select: none;
+        border-bottom: 1px dotted grey
     }
     .stat-picker h4 {
         display: inline-block;
@@ -130,13 +137,21 @@
         <h4>Unused points: {{remainingPoints}}</h4>
         <h4>Total points: {{superstar.totalPoints}}</h4>
 
-        <p class="statpicker">
+        <div class="stat-picker">
             <h4>Speed:</h4>
             <span class="minus-button" @click="decrementStat('speed')">-</span>
-            {{this.superstar.stats.speed}}
+            <span>{{this.superstar.stats.speed}}</span>
             <span class="plus-button" @click="incrementStat('speed')">+</span>
-        </p>
-        <input v-model="superstar.stats.strength" type="number" placeholder="Your speed.">
+        </div>
+
+        <div class="stat-picker">
+            <h4>Strength:</h4>
+            <span class="minus-button" @click="decrementStat('strength')">-</span>
+            <span>{{this.superstar.stats.strength}}</span>
+            <span class="plus-button" @click="incrementStat('strength')">+</span>
+        </div>
+
+
 
     </div>
 
@@ -166,14 +181,22 @@ export default {
     },
 
     methods: {
+        createUser: function(){
+
+        },
         setPoints: function(num){
             this.superstar.totalPoints = num
         },
         incrementStat: function(stat){
-            this.superstar.stats[stat] += 1
+            if(this.superstar.totalPoints > 0){
+                this.superstar.stats[stat] += 1
+            }
         },
         decrementStat: function(stat){
-            this.superstar.stats[stat] -= 1
+            if(this.superstar.stats[stat] > 0){
+                this.superstar.stats[stat] -= 1
+            }
+
         }
     },
 
