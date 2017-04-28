@@ -2,7 +2,7 @@ require 'api_constraints'
 
 Rails.application.routes.draw do
 
-  # devise_for :users
+  devise_for :users
 
   root 'application#index'
  # post '/sessions',to: 'api/v1/sessions#create'

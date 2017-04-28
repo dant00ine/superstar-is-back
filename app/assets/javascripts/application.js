@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//=bootstrap
 //= require turbolinks
 //= require vue
 //= require vue-router
