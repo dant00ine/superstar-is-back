@@ -27,3 +27,4 @@
 /node_modules
 *.jpg
 *.png
+npm-debug.log
